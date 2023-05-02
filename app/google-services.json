@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "355121044457",
+    "project_id": "notebook-7cc11",
+    "storage_bucket": "notebook-7cc11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355121044457:android:ec1912f6612d937d664978",
+        "android_client_info": {
+          "package_name": "ma.mobile.tp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355121044457-774nklkrqfrsishfof696svott41j4s0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9OGd1SJZH8aFyWtX6S5ck9LXJVgOGklM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355121044457-774nklkrqfrsishfof696svott41j4s0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

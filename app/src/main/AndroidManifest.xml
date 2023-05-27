@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteBook">
-        <activity android:name=".MainActivity">
+        <activity android:name="ma.mobile.etudiant.MainActivity3"></activity>
+        <activity android:name="ma.mobile.etudiant.MainActivity4" />
+        <activity android:name="ma.mobile.etudiant.Listview" />
+        <activity android:name="ma.mobile.etudiant.MainActivity2" />
+        <activity android:name="ma.mobile.etudiant.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

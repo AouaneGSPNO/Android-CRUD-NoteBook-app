@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ma.mobile.etudiant.MainActivity2">
+
+    <ListView
+        android:id="@+id/simpleListView"
+        android:layout_width="fill_parent"
+        android:layout_height="597dp"
+        android:divider="@color/material_blue_grey_800"
+        android:dividerHeight="1dp"
+         />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/vert"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:text=" Voir Situation"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+</LinearLayout>

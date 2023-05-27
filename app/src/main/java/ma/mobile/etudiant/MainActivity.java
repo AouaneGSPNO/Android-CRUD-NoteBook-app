@@ -1,15 +1,18 @@
-package ma.mobile.notebook;
+package ma.mobile.etudiant;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,21 +30,24 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import ma.mobile.notebook.R;
+
 public class MainActivity extends AppCompatActivity {
     DatabaseReference database;
 
     RecyclerView recyclerView;
     NoteRecyclerAdapter adapter ;
-    ArrayList <Note> listNote = new ArrayList();
-
+    ArrayList <Etudiant> listEtudiants = new ArrayList();
+   ImageView image;
     Button butADD;
-
+    int[] images = {R.drawable.ali,R.drawable.nada,R.drawable.chaimae,R.drawable.fatima,R.drawable.youcef,R.drawable.meryem,R.drawable.mohamed,R.drawable.younes,R.drawable.yassine,R.drawable.reda};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        image = this.findViewById(R.id.imageid);
         butADD = findViewById(R.id.add);
+
 
         database = FirebaseDatabase.getInstance().getReference();
 
@@ -64,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listNote.clear();
+                listEtudiants.clear();
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                 Note note = dataSnapshot1.getValue(Note.class);
-                listNote.add(note);
+                    Etudiant etudiant = dataSnapshot1.getValue(Etudiant.class);
+                listEtudiants.add(etudiant);
                 }
-                adapter = new NoteRecyclerAdapter(MainActivity.this,listNote);
+                adapter = new NoteRecyclerAdapter(MainActivity.this,listEtudiants,images);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -106,15 +112,18 @@ public class MainActivity extends AppCompatActivity {
                     DateFormat df = new SimpleDateFormat("d MMM yyyy, HH:mm");
                     String date = df.format(Calendar.getInstance().getTime());
 
-                    String id = "Le "+ date;
+                    String id = "Dernière MAJ Le "+ date;
                     String name = textName.getText().toString();
                     String text_note = textNote.getText().toString();
+                    Uri uri = Uri.parse("android.resource://ma.mobile.etudiant/drawable/"+name+".jpg");
 
                     if(name.isEmpty() || text_note.isEmpty()){
                         Toast.makeText(MainActivity.this, " Veuillez Saisir les données ..", Toast.LENGTH_SHORT).show();
-                    }else {
-                        database.child("NOTE").child(id).setValue(new Note(id,name,text_note));
-                        Toast.makeText(MainActivity.this, "Note Ajouteé avec succes ..", Toast.LENGTH_SHORT).show();
+                    }else {                        Log.d("TAG", "onClick:--------------------------/// "+uri);
+                       // image.setImageURI(uri);
+                        database.child("NOTE").child(name).setValue(new Etudiant(id,name,text_note));
+
+                        Toast.makeText(MainActivity.this, "Etudiant Ajouteé avec succes ..", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
 
                     }
